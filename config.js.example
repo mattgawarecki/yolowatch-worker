@@ -1,0 +1,45 @@
+var environmentConfigs = {
+  development: {
+    logger: {
+      level: 'silly'
+    },
+    db: {
+      path: 'mongodb://localhost/yolowatch'
+    },
+    server: {
+      port: 9003
+    },
+    api: {
+      consumer_secret: 'CONSUMER_SECRET_HERE',
+      access_token_secret: 'ACCESS_TOKEN_SECRET_HERE'
+    },
+    events: {
+      throttle_ms: 0
+    }
+  },
+  production: {
+    logger: {
+      level: 'info'
+    },
+    db: {
+      path: 'mongodb://localhost/yolowatch'
+    },
+    server: {
+      port: 9003
+    },
+    api: {
+      consumer_secret: 'CONSUMER_SECRET_HERE',
+      access_token_secret: 'ACCESS_TOKEN_SECRET_HERE'
+    },
+    events: {
+      throttle_ms: 0
+    }
+  }
+};
+
+var activeConfig = environmentConfigs.development;
+if (process.env.NODE_ENV in environmentConfigs) {
+  activeConfig = environmentConfigs[process.env.NODE_ENV];
+}
+
+module.exports = activeConfig;
