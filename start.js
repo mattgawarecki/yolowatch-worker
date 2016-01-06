@@ -1,6 +1,6 @@
 var config = require('./config');
 var logger = require('winston');
-logger.level = config.logger.level || 'info';
+logger.level = config.logger_level || 'info';
 
 process.on('uncaughtException', function(err) {
   logger.error('Process exiting.');
@@ -25,12 +25,11 @@ var now = function() { return new Date().valueOf(); };
 function initializeWorker(config, logger, initCallback) {
   var tweetEmitter = require('./tweet_emitter')({
     logger: logger,
-    server: require('socket.io')(config.port),
-    minRequestIntervalMs: config.events.throttle_ms || 0
+    server: require('socket.io')(config.socket_port)
   });
 
   var MongoClient = require('mongodb').MongoClient;
-  MongoClient.connect(config.db.path, function(err, db) {
+  MongoClient.connect(config.db_path, function(err, db) {
     if (err) return initCallback(err);
 
     initializeDatabase(logger, db, function(err, doc) {
