@@ -2,20 +2,21 @@
   "name": "yolowatch-worker",
   "version": "1.0.0",
   "private": true,
-  "description": "A background worker that monitors Twitter for tweets matching a specific term, records that information to a database, and emits an event on a web socket",
+  "description": "A background worker that monitors Twitter for tweets matching a specific term, records that information to a database, and emits each tweet as an event on a web socket",
   "keywords": [
     "yolo",
-    "twitter"
+    "twitter",
+    "worker"
   ],
   "author": "Matt Gawarecki",
   "license": "MIT",
-  "homepage": "https://github.com/mattgawarecki/yolowatch#readme",
+  "homepage": "https://github.com/mattgawarecki/yolowatch-worker#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattgawarecki/yolowatch-worker.git"
   },
   "bugs": {
-    "url": "https://github.com/mattgawarecki/yolowatch/issues"
+    "url": "https://github.com/mattgawarecki/yolowatch-worker/issues"
   },
   "engines": {
     "node": "5.1.0"
